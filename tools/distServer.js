@@ -20,6 +20,6 @@ app.listen(app.get('port'), function(err) {
   if (err) {
     console.log(err);
   } else {
-    open(`http://localhost:${app.get('port')}`);
+    console.log(`http://localhost:${app.get('port')}`);
   }
 });
