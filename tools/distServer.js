@@ -5,8 +5,9 @@ import compression from 'compression';
 
 /*eslint-disable no-console */
 
-const port = 3000;
 const app = express();
+
+app.set('port', (process.env.PORT || 5000));
 
 app.use(compression());
 app.use(express.static('dist'));
@@ -15,10 +16,10 @@ app.get('*', function(req, res) {
   res.sendFile(path.join(__dirname, '../dist/index.html'));
 });
 
-app.listen(port, function(err) {
+app.listen(app.get('port'), function(err) {
   if (err) {
     console.log(err);
   } else {
-    open(`http://localhost:${port}`);
+    open(`http://localhost:${app.get('port')}`);
   }
 });
